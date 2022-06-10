@@ -72,7 +72,6 @@ var tlist = {
   
   //>图标依次切换乌龟、兔子、闹钟、礼品盒
   function icon_now(num){
-    var num=Math.floor(Math.random()*10+1)
     if(num<=7 && num>3 ){
       return "hare"
     }else if(num<=3 && num>0){
