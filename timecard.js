@@ -79,7 +79,7 @@ var tlist = {
     }else if(num==0){
       return "gift"
     }else{
-      return "tortoise"
+      return "clock"
     }
   }
   
