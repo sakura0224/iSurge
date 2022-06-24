@@ -9,7 +9,7 @@ let rewrite_status = (await httpAPI("/v1/features/rewrite","GET"));
 let scripting_status = (await httpAPI("/v1/features/scripting","GET"));
 let icon_s = mitm_status.enabled&&rewrite_status.enabled&&scripting_status.enabled;
 //点击按钮，刷新dns
-if ($trigger == "button") await httpAPI("/v1/dns/flush");
+//if ($trigger == "button") await httpAPI("/v1/dns/flush");
 //点击按钮，重载配置（同时刷新dns）
 if ($trigger == "button") {
 	await httpAPI("/v1/profiles/reload");
@@ -19,7 +19,7 @@ $done({
     title:"𝗦𝗨𝗥𝗚𝗘 𝗣𝗥𝗢®",
     content:`启动时长：${startTime}\n`+
             "Mitm:"+icon_status(mitm_status.enabled)+"  Rewrite:"+icon_status(rewrite_status.enabled)+"  Scripting:"+icon_status(scripting_status.enabled),
-    icon: icon_s?"params.icon":"exclamationmark.triangle",
+    icon: icon_s?"paperplane.circle":"exclamationmark.triangle",
    "icon-color":icon_s?"#0089A7":"#FF7500"
 });
 })();
