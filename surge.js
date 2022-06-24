@@ -9,7 +9,7 @@ let rewrite_status = (await httpAPI("/v1/features/rewrite","GET"));
 let scripting_status = (await httpAPI("/v1/features/scripting","GET"));
 let icon_s = mitm_status.enabled&&rewrite_status.enabled&&scripting_status.enabled;
 //点击按钮，刷新dns
-//if ($trigger == "button") await httpAPI("/v1/dns/flush");
+if ($trigger == "button") await httpAPI("/v1/dns/flush");
 //点击按钮，重载配置（同时刷新dns）
 if ($trigger == "button") {
 	await httpAPI("/v1/profiles/reload");
