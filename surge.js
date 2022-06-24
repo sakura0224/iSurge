@@ -17,8 +17,8 @@ if ($trigger == "button") {
 };
 $done({
     title:"𝗦𝗨𝗥𝗚𝗘 𝗣𝗥𝗢®",
-    content:`启动时长：+${startTime}\n`+
-            `"Mitm:"+icon_status(mitm_status.enabled)+"  Rewrite:"+icon_status(rewrite_status.enabled)+"  Scripting:"+icon_status(scripting_status.enabled)`,
+    content:`启动时长：${startTime}\n`+
+            "Mitm:"+icon_status(mitm_status.enabled)+"  Rewrite:"+icon_status(rewrite_status.enabled)+"  Scripting:"+icon_status(scripting_status.enabled),
     icon: icon_s?"power.circle":"exclamationmark.triangle",
    "icon-color":icon_s?"#FF2D55":"#FF7500"
 });
