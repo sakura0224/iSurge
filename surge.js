@@ -19,7 +19,7 @@ $done({
     title:"Surge Pro®",
     content:
 	`启动时长: ${startTime}\n` +
-	"Mitm:"+icon_status(mitm_status.enabled)+"  Rewrite:"+icon_status(rewrite_status.enabled)+"  Scripting:"+icon_status(scripting_status.enabled),
+	`"Mitm:"+icon_status(mitm_status.enabled)+  "Rewrite:"+icon_status(rewrite_status.enabled)+  "Scripting:"+icon_status(scripting_status.enabled)`,
     icon: params.icon,
    "icon-color":params.color
 });
