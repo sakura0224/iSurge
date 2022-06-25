@@ -1,4 +1,3 @@
-
 var list = ["南京","上海"];
 const url = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5";
 var ala="";
