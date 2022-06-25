@@ -1,2 +1,1 @@
-Surge相关的配置
-含有panel和conf
+Surge自用的相关配置
