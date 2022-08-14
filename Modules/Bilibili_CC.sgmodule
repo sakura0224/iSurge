@@ -1,0 +1,8 @@
+#!name=bilibili_CC字幕
+#!desc=哔哩哔哩繁体CC字幕转中文简体
+#b站繁体字幕转简体 修改于@ddgksf2013
+[MITM]
+hostname = *.hdslb.com
+
+[Script]
+bilibili_cc = type=http-response,pattern=^https?:\/\/i.\.hdslb\.com\/bfs\/subtitle\/.+\.json$,script-path=https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Script/bilibili_cc.js,script-update-interval=0
