@@ -1,0 +1,175 @@
+mixed-port: 7890
+mode: rule
+ipv6: false
+geodata-mode: true 
+geox-url:
+  geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+  geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
+  mmdb: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb"
+global-client-fingerprint: chrome
+external-controller: 0.0.0.0:9090
+tcp-concurrent: true
+find-process-mode: strict
+sniffer:
+  enable: true
+  skip-domain:
+    - 'Mijia Cloud'
+    - 'dlg.io.mi.com'
+    - '+.apple.com'
+  sniffing:
+    - http
+    - tls
+
+
+tun:
+  enable: false
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+  #inet4-address:
+  #  - 28.0.0.1/8
+  #inet6-address:
+  #  - fdfe:dcba:9876::1/126
+  #inet4-route-address:
+  #  - 0.0.0.0/1
+  #  - 128.0.0.0/1
+  #inet6-route-address:
+  #  - "::/1"
+  #  - "8000::/1"
+
+
+dns:
+  enable: true
+  listen: 127.0.0.1:53
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  nameserver-policy:
+    "geosite:cn,private":
+      - 223.5.5.5
+      - 114.114.114.114
+
+
+proxies:
+  - name: "DMIT-reality"
+    type: vless
+    server: 154.17.29.173
+    port: 16387
+    uuid: bc094910-3e76-49c9-b5e8-6a58588e4ab6
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: test.ayane.top # REALITY servername
+    reality-opts:
+      public-key: AHBPN0WhXrUJ8KpQX1Z6mFJVlzAWN4Bb7qhtS0Iucjs
+    client-fingerprint: chrome # cannot be empty
+
+  - name: DMIT-tuic
+    server: test.ayane.top
+    port: 15495
+    type: tuic
+    uuid: bc094910-3e76-49c9-b5e8-6a58588e4ab6
+    password: bc094910-3e76-49c9-b5e8-6a58588e4ab6
+    ip: 154.17.29.173 # for overwriting the DNS lookup result of the server address set in option 'server'
+    alpn: [h3]
+    disable-sni: false
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
+    sni: test.ayane.top
+
+  - name: "Azure-reality"
+    type: vless
+    server: 20.78.192.186
+    port: 443
+    uuid: ff53ec07-0196-4d9c-b131-e7009c474479
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: azure.ayane.top # REALITY servername
+    reality-opts:
+      public-key: dd0byiFBw0SLzEQbL2robFfqce7slv_XgzKjuLEBqEY
+    client-fingerprint: chrome # cannot be empty
+  
+  - name: Azure-tuic
+    server: azure.ayane.top
+    port: 18746
+    type: tuic
+    uuid: fb631190-76be-4a87-b685-a2042c9266e3
+    password: fb631190-76be-4a87-b685-a2042c9266e3
+    ip: 20.78.192.186 # for overwriting the DNS lookup result of the server address set in option 'server'
+    alpn: [h3]
+    disable-sni: false
+    reduce-rtt: true
+    udp-relay-mode: native
+    congestion-controller: bbr
+    sni: azure.ayane.top
+
+proxy-groups:
+  - name: Proxy
+    type: select
+    proxies:
+      - DMIT-reality
+      - DMIT-tuic
+      - Azure-reality
+      - Azure-tuic
+
+
+rule-providers:
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+
+  steamCN:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/SteamCN/SteamCN.yaml"
+    path: ./ruleset/steamCN.yaml
+    interval: 86400
+
+  GameDownload:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/GameDownload/GameDownload.yaml"
+    path: ./ruleset/GameDownload.yaml
+    interval: 86400
+
+
+rules:
+  - RULE-SET,GameDownload,DIRECT
+  - RULE-SET,steamCN,DIRECT
+  - DOMAIN-SUFFIX,bing.com,Proxy
+  - RULE-SET,reject,REJECT
+  - GEOSITE,category-ads,REJECT
+  - RULE-SET,gfw,Proxy
+  - GEOIP,LAN,DIRECT
+  - GEOSITE,cn,DIRECT
+  - GEOIP,cn,DIRECT
+  - MATCH,Proxy
