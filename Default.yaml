@@ -102,34 +102,6 @@ proxies:
     congestion-controller: bbr
     sni: test.ayane.top
 
-  - name: "Azure-Tokyo-Reality"
-    type: vless
-    server: 20.78.192.186
-    port: 443
-    uuid: ff53ec07-0196-4d9c-b131-e7009c474479
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: azure.ayane.top # REALITY servername
-    reality-opts:
-      public-key: dd0byiFBw0SLzEQbL2robFfqce7slv_XgzKjuLEBqEY
-    client-fingerprint: chrome # cannot be empty
-  
-  - name: Azure-Tokyo-Tuic
-    server: azure.ayane.top
-    port: 18746
-    type: tuic
-    uuid: fb631190-76be-4a87-b685-a2042c9266e3
-    password: fb631190-76be-4a87-b685-a2042c9266e3
-    ip: 20.78.192.186 # for overwriting the DNS lookup result of the server address set in option 'server'
-    alpn: [h3]
-    disable-sni: false
-    reduce-rtt: true
-    udp-relay-mode: native
-    congestion-controller: bbr
-    sni: azure.ayane.top
-
   - name: "RN-SJC-Reality"
     type: vless
     server: 192.227.148.174
@@ -171,8 +143,6 @@ proxy-groups:
       - V.PS-Tokyo-Reality
       - DMIT-L.A.-Reality
       - DMIT-L.A.-Tuic
-      - Azure-Tokyo-Reality
-      - Azure-Tokyo-Tuic
       - RN-SJC-Reality
       - RN-SJC-H2
 
