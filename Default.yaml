@@ -74,7 +74,7 @@ proxies:
       public-key: uB8X5KS1HEEDcw_MAHDBZmNRiLmTQdnQGBMHS5Jf2zE
     client-fingerprint: chrome # cannot be empty
     
-  - name: "DMIT-reality"
+  - name: "DMIT-L.A.-Reality"
     type: vless
     server: 154.17.29.173
     port: 16387
@@ -88,7 +88,7 @@ proxies:
       public-key: AHBPN0WhXrUJ8KpQX1Z6mFJVlzAWN4Bb7qhtS0Iucjs
     client-fingerprint: chrome # cannot be empty
 
-  - name: DMIT-tuic
+  - name: DMIT-L.A.-Tuic
     server: test.ayane.top
     port: 15495
     type: tuic
@@ -102,7 +102,7 @@ proxies:
     congestion-controller: bbr
     sni: test.ayane.top
 
-  - name: "Azure-reality"
+  - name: "Azure-Tokyo-Reality"
     type: vless
     server: 20.78.192.186
     port: 443
@@ -116,7 +116,7 @@ proxies:
       public-key: dd0byiFBw0SLzEQbL2robFfqce7slv_XgzKjuLEBqEY
     client-fingerprint: chrome # cannot be empty
   
-  - name: Azure-tuic
+  - name: Azure-Tokyo-Tuic
     server: azure.ayane.top
     port: 18746
     type: tuic
@@ -130,7 +130,7 @@ proxies:
     congestion-controller: bbr
     sni: azure.ayane.top
 
-  - name: "RN-reality"
+  - name: "RN-SJC-Reality"
     type: vless
     server: 192.227.148.174
     port: 11453
@@ -146,7 +146,7 @@ proxies:
     client-fingerprint: chrome # cannot be empty
     
     #hysteria2
-  - name: "RN-H2"
+  - name: "RN-SJC-H2"
     type: hysteria2
     server: 192.227.148.174
     port: 22543
@@ -168,12 +168,13 @@ proxy-groups:
   - name: Proxy
     type: select
     proxies:
-      - DMIT-reality
-      - DMIT-tuic
-      - Azure-reality
-      - Azure-tuic
-      - RN-H2
-      - RN-reality
+      - V.PS-Tokyo-Reality
+      - DMIT-L.A.-Reality
+      - DMIT-L.A.-Tuic
+      - Azure-Tokyo-Reality
+      - Azure-Tokyo-Tuic
+      - RN-SJC-Reality
+      - RN-SJC-H2
 
 
 rule-providers:
