@@ -83,58 +83,25 @@ proxies:
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: test.ayane.top # REALITY servername
+    servername: gateway.icloud.com # REALITY servername
     reality-opts:
       public-key: AHBPN0WhXrUJ8KpQX1Z6mFJVlzAWN4Bb7qhtS0Iucjs
     client-fingerprint: chrome # cannot be empty
 
-  - name: DMIT-L.A.-Tuic
-    server: test.ayane.top
-    port: 15495
-    type: tuic
-    uuid: bc094910-3e76-49c9-b5e8-6a58588e4ab6
-    password: bc094910-3e76-49c9-b5e8-6a58588e4ab6
-    ip: 154.17.29.173 # for overwriting the DNS lookup result of the server address set in option 'server'
-    alpn: [h3]
-    disable-sni: false
-    reduce-rtt: true
-    udp-relay-mode: native
-    congestion-controller: bbr
-    sni: test.ayane.top
-
   - name: "RN-SJC-Reality"
     type: vless
     server: 192.227.148.174
-    port: 11453
-    uuid: e24011b7-7ef9-4959-afe4-a61d4fdf84ba
+    port: 18802
+    uuid: f7540b84-2e58-43ff-8523-0387077a78ef
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: rn.ayane.top # REALITY servername
+    servername: gateway.icloud.com # REALITY servername
     reality-opts:
       short-id: 6ba85179e30d4fc2 # optional
-      public-key: ZblKN_n1H_nA6rIVmF1rnNBM8U7dTASvQNEUMrvWoBU
+      public-key: 8g40GLOp70rUWtxanPxXyaN0gbcTnALuz4fXYVXh9xM
     client-fingerprint: chrome # cannot be empty
-    
-    #hysteria2
-  - name: "RN-SJC-H2"
-    type: hysteria2
-    server: 192.227.148.174
-    port: 22543
-    #  up和down均不写或为0则使用BBR流控
-    up: "200 Mbps" # 若不写单位，默认为 Mbps
-    down: "200 Mbps" # 若不写单位，默认为 Mbps
-    password: e24011b7-7ef9-4959-afe4-a61d4fdf84ba
-    # obfs: salamander # 默认为空，如果填写则开启obfs，目前仅支持salamander
-    # obfs-password: yourpassword
-    sni: rn.ayane.top
-    # skip-cert-verify: false
-    # fingerprint: xxxx
-    alpn:
-      - h3
-    # ca: "./my.ca"
-    # ca-str: "xyz"
 
 proxy-groups:
   - name: Proxy
@@ -142,9 +109,7 @@ proxy-groups:
     proxies:
       - V.PS-Tokyo-Reality
       - DMIT-L.A.-Reality
-      - DMIT-L.A.-Tuic
       - RN-SJC-Reality
-      - RN-SJC-H2
 
 
 rule-providers:
