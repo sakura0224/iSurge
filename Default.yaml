@@ -58,12 +58,11 @@ dns:
       - 114.114.114.114
 
 
-proxies:
   - name: "V.PS-Tokyo-Reality"
     type: vless
     server: 195.245.241.160
     port: 35515
-    uuid: dbdd94fe-2533-4934-90cf-84747026d79d
+    uuid: d7245ca4-ef8a-4fc1-9ffc-659969dcf6b2
     network: tcp
     tls: true
     udp: true
@@ -71,7 +70,7 @@ proxies:
     servername: www.lovelive-anime.jp # REALITY servername
     reality-opts:
       short-id: 6ba85179e30d4fc2 # optional
-      public-key: uB8X5KS1HEEDcw_MAHDBZmNRiLmTQdnQGBMHS5Jf2zE
+      public-key: NbF-AII8hcE4HGmcISyXMyjZThqIHlNB3Fg4KIj9TlU
     client-fingerprint: chrome # cannot be empty
     
   - name: "DMIT-L.A.-Reality"
