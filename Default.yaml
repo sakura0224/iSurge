@@ -3,49 +3,58 @@ mode: rule
 ipv6: false
 geodata-mode: true 
 geox-url:
-  geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
-  geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
-  mmdb: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb"
+  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb"
+geo-auto-update: false # 是否自动更新 geodata
+geo-update-interval: 24 # 更新间隔，单位：小时
+log-level: info # 日志等级 silent/error/warning/info/debug
 global-client-fingerprint: chrome
 external-controller: 0.0.0.0:9090
 tcp-concurrent: true
 find-process-mode: strict
-sniffer:
-  enable: true
-  skip-domain:
-    - 'Mijia Cloud'
-    - 'dlg.io.mi.com'
-    - '+.apple.com'
-  sniffing:
-    - http
-    - tls
+unified-delay: true
 
+profile: # 存储 select 选择记录
+  store-selected: true
+  # 持久化 fake-ip
+  store-fake-ip: true
 
 tun:
   enable: false
-  stack: system
+  stack: mixed
   auto-route: true
   auto-detect-interface: true
   dns-hijack:
     - any:53
-  #inet4-address:
-  #  - 28.0.0.1/8
-  #inet6-address:
-  #  - fdfe:dcba:9876::1/126
-  #inet4-route-address:
-  #  - 0.0.0.0/1
-  #  - 128.0.0.0/1
-  #inet6-route-address:
-  #  - "::/1"
-  #  - "8000::/1"
+    - tcp://any:53
 
+sniffer:
+  enable: true
+  sniff: # TLS 和 QUIC 默认如果不配置 ports 默认嗅探 443
+    QUIC:
+      ports: [443, 8443]
+    TLS:
+      ports: [443, 8443]
+    # 默认嗅探 80
+    HTTP: # 需要嗅探的端口
+      ports: [80, 8080-8880]
+      override-destination: true
+  sniffing:
+    - tls
+    - http
 
 dns:
   enable: true
-  listen: 127.0.0.1:53
+  cache-algorithm: arc
+  listen: 0.0.0.0:53
   ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*'
+    - '+.lan'
+    - '+.local'
   default-nameserver:
     - 114.114.114.114
     - 223.5.5.5
@@ -67,7 +76,7 @@ proxies:
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: idolmaster-official.jp # REALITY servername
+    servername: www.lovelive-anime.jp # REALITY servername
     reality-opts:
       short-id: 6ba85179e30d4fc2 # optional
       public-key: MfHz8e-2PAOwH5V87X5oa4NFOY67FL_9iytsRgoKchQ
@@ -156,6 +165,7 @@ rule-providers:
 
 
 rules:
+  - AND,((NETWORK,UDP),(DST-PORT,443)),REJECT
   - RULE-SET,GameDownload,DIRECT
   - RULE-SET,steamCN,DIRECT
   - DOMAIN-SUFFIX,bing.com,Proxy
