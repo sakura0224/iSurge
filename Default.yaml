@@ -118,7 +118,12 @@ proxy-groups:
       - V.PS-Tokyo-Reality
       - Akile-Tokyo-Reality
       - RN-SJC-Reality
-
+      
+  - name: OpenAI
+    type: select
+    proxies:
+      - V.PS-Tokyo-Reality
+      - Akile-Tokyo-Reality
 
 rule-providers:
   reject:
@@ -169,7 +174,7 @@ rules:
   - RULE-SET,GameDownload,DIRECT
   - RULE-SET,steamCN,DIRECT
   - DOMAIN-SUFFIX,bing.com,Proxy
-  - RULE-SET,OpenAI,V.PS-Tokyo-Reality
+  - RULE-SET,OpenAI,OpenAI
   - RULE-SET,reject,REJECT
   - GEOSITE,category-ads,REJECT
   - RULE-SET,gfw,Proxy
