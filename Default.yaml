@@ -82,18 +82,18 @@ proxies:
       public-key: MfHz8e-2PAOwH5V87X5oa4NFOY67FL_9iytsRgoKchQ
     client-fingerprint: chrome # cannot be empty
     
-  - name: "DMIT-L.A.-Reality"
+  - name: "Akile-Tokyo-Reality"
     type: vless
-    server: 154.17.29.173
-    port: 16387
-    uuid: bc094910-3e76-49c9-b5e8-6a58588e4ab6
+    server: 103.232.213.233
+    port: 23416
+    uuid: 41f9ae8a-95ac-42ee-938f-7118815ad650
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: gateway.icloud.com # REALITY servername
+    servername: www.lovelive-anime.jp # REALITY servername
     reality-opts:
-      public-key: AHBPN0WhXrUJ8KpQX1Z6mFJVlzAWN4Bb7qhtS0Iucjs
+      public-key: FLvEhDnnFszznZEnoATCbnAxPXhr0DrfgjoTMgPshwo
     client-fingerprint: chrome # cannot be empty
 
   - name: "RN-SJC-Reality"
