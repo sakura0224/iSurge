@@ -116,7 +116,7 @@ proxy-groups:
     type: select
     proxies:
       - V.PS-Tokyo-Reality
-      - DMIT-L.A.-Reality
+      - Akile-Tokyo-Reality
       - RN-SJC-Reality
 
 
