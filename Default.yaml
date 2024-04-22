@@ -67,6 +67,35 @@ dns:
       - 114.114.114.114
 
 proxies:
+  - name: "Sharon-Tokyo-Reality"
+    type: vless
+    server: 157.254.198.115
+    port: 17553
+    uuid: 93ac1439-b031-4b02-8384-4870b5d3aa64
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: www.lovelive-anime.jp # REALITY servername
+    reality-opts:
+      short-id: 6ba85179e30d4fc2 # optional
+      public-key: -rxFN3M3GvKO4q4NeEv37ttbqUE2W2W_GoObe9Hc_xk
+    client-fingerprint: chrome # cannot be empty
+
+  - name: "Akile-Tokyo-Reality"
+    type: vless
+    server: 103.232.213.233
+    port: 23416
+    uuid: 41f9ae8a-95ac-42ee-938f-7118815ad650
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: www.lovelive-anime.jp # REALITY servername
+    reality-opts:
+      public-key: FLvEhDnnFszznZEnoATCbnAxPXhr0DrfgjoTMgPshwo
+    client-fingerprint: chrome # cannot be empty
+    
   - name: "V.PS-Tokyo-Reality"
     type: vless
     server: 195.245.241.160
@@ -80,20 +109,6 @@ proxies:
     reality-opts:
       short-id: 6ba85179e30d4fc2 # optional
       public-key: MfHz8e-2PAOwH5V87X5oa4NFOY67FL_9iytsRgoKchQ
-    client-fingerprint: chrome # cannot be empty
-    
-  - name: "Akile-Tokyo-Reality"
-    type: vless
-    server: 103.232.213.233
-    port: 23416
-    uuid: 41f9ae8a-95ac-42ee-938f-7118815ad650
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: www.lovelive-anime.jp # REALITY servername
-    reality-opts:
-      public-key: FLvEhDnnFszznZEnoATCbnAxPXhr0DrfgjoTMgPshwo
     client-fingerprint: chrome # cannot be empty
 
   - name: "RN-SJC-Reality"
@@ -115,15 +130,17 @@ proxy-groups:
   - name: Proxy
     type: select
     proxies:
-      - V.PS-Tokyo-Reality
+      - Sharon-Tokyo-Reality
       - Akile-Tokyo-Reality
+      - V.PS-Tokyo-Reality
       - RN-SJC-Reality
       
   - name: OpenAI
     type: select
     proxies:
-      - V.PS-Tokyo-Reality
+      - Sharon-Tokyo-Reality
       - Akile-Tokyo-Reality
+      - V.PS-Tokyo-Reality
 
 rule-providers:
   reject:
