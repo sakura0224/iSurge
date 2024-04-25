@@ -71,7 +71,7 @@ proxies:
     type: vless
     server: 157.254.198.115
     port: 10970
-    uuid: 870bc327-f73d-4c64-a17b-440496171148
+    uuid: 22932a47-a306-4584-baad-63c8c3dec54e
     network: tcp
     tls: true
     udp: true
