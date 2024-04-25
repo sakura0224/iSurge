@@ -70,8 +70,8 @@ proxies:
   - name: "Sharon-Tokyo-Reality"
     type: vless
     server: 157.254.198.115
-    port: 10970
-    uuid: 22932a47-a306-4584-baad-63c8c3dec54e
+    port: 11503
+    uuid: 5ac8fa33-2a08-48cd-96dc-50452d856a9e
     network: tcp
     tls: true
     udp: true
@@ -79,7 +79,7 @@ proxies:
     servername: www.lovelive-anime.jp # REALITY servername
     reality-opts:
       short-id: 6ba85179e30d4fc2 # optional
-      public-key: 0nIBSBO33PSqQlulcTTKuHOvT1T_TkIxDTnhLECWqwk
+      public-key: FnqnFm_9HzM1gEmNGDtvE7KZl7MVUNqrmO6QxtPJ4TA
     client-fingerprint: chrome # cannot be empty
 
   - name: "Akile-Tokyo-Reality"
@@ -99,8 +99,8 @@ proxies:
   - name: "V.PS-Tokyo-Reality"
     type: vless
     server: 195.245.241.160
-    port: 18238
-    uuid: d7245ca4-ef8a-4fc1-9ffc-659969dcf6b2
+    port: 29332
+    uuid: 38315afb-f655-454f-9f5b-8f83d1c59730
     network: tcp
     tls: true
     udp: true
@@ -108,7 +108,7 @@ proxies:
     servername: www.lovelive-anime.jp # REALITY servername
     reality-opts:
       short-id: 6ba85179e30d4fc2 # optional
-      public-key: MfHz8e-2PAOwH5V87X5oa4NFOY67FL_9iytsRgoKchQ
+      public-key: BN5Uet02yGT83emVXrJQeKkRzKvzwR_OxoLqsVIRhEI
     client-fingerprint: chrome # cannot be empty
 
   - name: "RN-SJC-Reality"
