@@ -70,16 +70,16 @@ proxies:
   - name: "Sharon-Tokyo-Reality"
     type: vless
     server: 157.254.198.115
-    port: 17553
-    uuid: 93ac1439-b031-4b02-8384-4870b5d3aa64
+    port: 443
+    uuid: 870bc327-f73d-4c64-a17b-440496171148
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision
-    servername: www.lovelive-anime.jp # REALITY servername
+    servername: sharon.ayane.top # REALITY servername
     reality-opts:
       short-id: 6ba85179e30d4fc2 # optional
-      public-key: -rxFN3M3GvKO4q4NeEv37ttbqUE2W2W_GoObe9Hc_xk
+      public-key: 0nIBSBO33PSqQlulcTTKuHOvT1T_TkIxDTnhLECWqwk
     client-fingerprint: chrome # cannot be empty
 
   - name: "Akile-Tokyo-Reality"
