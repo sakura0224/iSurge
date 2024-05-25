@@ -179,7 +179,7 @@ rule-providers:
 rules:
   - RULE-SET,GameDownload,DIRECT
   - RULE-SET,steamCN,DIRECT
-  - RULE-SET,Bing,OpenAI
+  - RULE-SET,Bing,Proxy
   - RULE-SET,OpenAI,OpenAI
   - RULE-SET,reject,REJECT
   - GEOSITE,category-ads,REJECT
