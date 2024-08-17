@@ -100,7 +100,7 @@ proxies:
   - name: "RN-SJC-Reality"
     type: vless
     server: 192.227.148.174
-    port: 18802
+    port: 13769
     uuid: f7540b84-2e58-43ff-8523-0387077a78ef
     network: tcp
     tls: true
@@ -177,9 +177,12 @@ rule-providers:
     interval: 86400
 
 rules:
+  - DOMAIN-SUFFIX,emby.misakaf.org,Proxy
+  - DOMAIN-SUFFIX,iflow.work,Proxy
+  - DOMAIN-SUFFIX,hembed.com,Sharon-Tokyo-Reality
+  - DOMAIN-SUFFIX,hanime1.me,RN-SJC-Reality
   - RULE-SET,GameDownload,DIRECT
   - RULE-SET,steamCN,DIRECT
-  - RULE-SET,Bing,Proxy
   - RULE-SET,OpenAI,OpenAI
   - RULE-SET,reject,REJECT
   - GEOSITE,category-ads,REJECT
