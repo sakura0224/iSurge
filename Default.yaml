@@ -1,49 +1,49 @@
 mixed-port: 7890
 mode: rule
 ipv6: false
-geodata-mode: true 
+geodata-mode: true
 geox-url:
-  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
-  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
-  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb"
-geo-auto-update: false # 是否自动更新 geodata
-geo-update-interval: 24 # 更新间隔，单位：小时
-log-level: info # 日志等级 silent/error/warning/info/debug
+  geoip: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
+  geosite: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
+  mmdb: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb
+geo-auto-update: false
+geo-update-interval: 24
+log-level: info
 global-client-fingerprint: chrome
 external-controller: 0.0.0.0:9090
 tcp-concurrent: true
 find-process-mode: strict
 unified-delay: true
-
-profile: # 存储 select 选择记录
+profile:
   store-selected: true
-  # 持久化 fake-ip
   store-fake-ip: true
-
 tun:
   enable: false
   stack: mixed
   auto-route: true
   auto-detect-interface: true
   dns-hijack:
-    - any:53
-    - tcp://any:53
-
+  - any:53
+  - tcp://any:53
 sniffer:
   enable: true
-  sniff: # TLS 和 QUIC 默认如果不配置 ports 默认嗅探 443
+  sniff:
     QUIC:
-      ports: [443, 8443]
+      ports:
+      - 443
+      - 8443
     TLS:
-      ports: [443, 8443]
-    # 默认嗅探 80
-    HTTP: # 需要嗅探的端口
-      ports: [80, 8080-8880]
+      ports:
+      - 443
+      - 8443
+    HTTP:
+      ports:
+      - 80
+      - 8080-8880
       override-destination: true
   sniffing:
-    - tls
-    - http
-
+  - tls
+  - http
 dns:
   enable: true
   cache-algorithm: arc
@@ -52,142 +52,145 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
-    - '*'
-    - '+.lan'
-    - '+.local'
+  - '*'
+  - +.lan
+  - +.local
   default-nameserver:
-    - 114.114.114.114
-    - 223.5.5.5
+  - 114.114.114.114
+  - 223.5.5.5
   nameserver:
+  - 223.5.5.5
+  - 114.114.114.114
+  nameserver-policy:
+    geosite:cn,private:
     - 223.5.5.5
     - 114.114.114.114
-  nameserver-policy:
-    "geosite:cn,private":
-      - 223.5.5.5
-      - 114.114.114.114
-
 proxies:
-  - name: "Sharon-Tokyo-Reality"
-    type: vless
-    server: 157.254.198.115
-    port: 20677
-    uuid: e7af5636-0b2c-4876-83de-01fafbfc2933
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: www.lovelive-anime.jp # REALITY servername
-    reality-opts:
-      short-id: 6ba85179e30d4fc2 # optional
-      public-key: V6YF_1mdBq0U0BI6M8wFgyd536eqGUKhmYwgM2ahNkc
-    client-fingerprint: chrome # cannot be empty
-
-  - name: "V.PS-Tokyo-Reality"
-    type: vless
-    server: 195.245.241.160
-    port: 29332
-    uuid: 38315afb-f655-454f-9f5b-8f83d1c59730
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: www.lovelive-anime.jp # REALITY servername
-    reality-opts:
-      short-id: 6ba85179e30d4fc2 # optional
-      public-key: BN5Uet02yGT83emVXrJQeKkRzKvzwR_OxoLqsVIRhEI
-    client-fingerprint: chrome # cannot be empty
-
-  - name: "RN-SJC-Reality"
-    type: vless
-    server: 192.227.148.174
-    port: 13769
-    uuid: f7540b84-2e58-43ff-8523-0387077a78ef
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: gateway.icloud.com # REALITY servername
-    reality-opts:
-      short-id: 6ba85179e30d4fc2 # optional
-      public-key: 8g40GLOp70rUWtxanPxXyaN0gbcTnALuz4fXYVXh9xM
-    client-fingerprint: chrome # cannot be empty
-
+- name: Sharon-JPlite-Reality
+  type: vless
+  server: 157.254.198.115
+  port: 20677
+  uuid: e7af5636-0b2c-4876-83de-01fafbfc2933
+  network: tcp
+  tls: true
+  udp: true
+  flow: xtls-rprx-vision
+  servername: www.lovelive-anime.jp
+  reality-opts:
+    short-id: 6ba85179e30d4fc2
+    public-key: V6YF_1mdBq0U0BI6M8wFgyd536eqGUKhmYwgM2ahNkc
+  client-fingerprint: chrome
+- name: Sharon-JPstd-Reality
+  type: vless
+  server: 157.254.198.9
+  port: 17209
+  uuid: d9ecea05-d54d-412c-9a7a-da10acd2870e
+  network: tcp
+  tls: true
+  udp: true
+  flow: xtls-rprx-vision
+  servername: www.lovelive-anime.jp
+  reality-opts:
+    short-id: 6ba85179e30d4fc2
+    public-key: G0gaRgmuS4pq5b7zmapzuPBehdGkC2bzhJetBSMIwFU
+  client-fingerprint: chrome
+- name: V.PS-Tokyo-Reality
+  type: vless
+  server: 195.245.241.160
+  port: 29332
+  uuid: 38315afb-f655-454f-9f5b-8f83d1c59730
+  network: tcp
+  tls: true
+  udp: true
+  flow: xtls-rprx-vision
+  servername: www.lovelive-anime.jp
+  reality-opts:
+    short-id: 6ba85179e30d4fc2
+    public-key: BN5Uet02yGT83emVXrJQeKkRzKvzwR_OxoLqsVIRhEI
+  client-fingerprint: chrome
+- name: RN-SJC-Reality
+  type: vless
+  server: 192.227.148.174
+  port: 13769
+  uuid: f7540b84-2e58-43ff-8523-0387077a78ef
+  network: tcp
+  tls: true
+  udp: true
+  flow: xtls-rprx-vision
+  servername: gateway.icloud.com
+  reality-opts:
+    short-id: 6ba85179e30d4fc2
+    public-key: 8g40GLOp70rUWtxanPxXyaN0gbcTnALuz4fXYVXh9xM
+  client-fingerprint: chrome
 proxy-groups:
-  - name: Proxy
-    type: select
-    proxies:
-      - Sharon-Tokyo-Reality
-      - V.PS-Tokyo-Reality
-      - RN-SJC-Reality
-      
-  - name: OpenAI
-    type: select
-    proxies:
-      - Sharon-Tokyo-Reality
-      - V.PS-Tokyo-Reality
-
+- name: Proxy
+  type: select
+  proxies:
+  - Sharon-JPlite-Reality
+  - Sharon-JPstd-Reality
+  - V.PS-Tokyo-Reality
+  - RN-SJC-Reality
+- name: OpenAI
+  type: select
+  proxies:
+  - Sharon-JPlite-Reality
+  - Sharon-JPstd-Reality
+  - V.PS-Tokyo-Reality
 rule-providers:
   reject:
     type: http
     behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt
     path: ./ruleset/reject.yaml
     interval: 86400
-
   proxy:
     type: http
     behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt
     path: ./ruleset/proxy.yaml
     interval: 86400
-
   gfw:
     type: http
     behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt
     path: ./ruleset/gfw.yaml
     interval: 86400
-
   steamCN:
     type: http
     behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/SteamCN/SteamCN.yaml"
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/SteamCN/SteamCN.yaml
     path: ./ruleset/steamCN.yaml
     interval: 86400
-
   GameDownload:
     type: http
     behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/GameDownload/GameDownload.yaml"
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/GameDownload/GameDownload.yaml
     path: ./ruleset/GameDownload.yaml
     interval: 86400
-
   OpenAI:
     type: http
     behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml"
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml
     path: ./ruleset/OpenAI.yaml
     interval: 86400
-
   Bing:
     type: http
     behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml"
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Bing/Bing.yaml
     path: ./ruleset/Bing.yaml
     interval: 86400
-
 rules:
-  - DOMAIN-SUFFIX,emby.misakaf.org,Proxy
-  - DOMAIN-SUFFIX,iflow.work,Proxy
-  - DOMAIN-SUFFIX,hembed.com,Sharon-Tokyo-Reality
-  - DOMAIN-SUFFIX,hanime1.me,RN-SJC-Reality
-  - RULE-SET,GameDownload,DIRECT
-  - RULE-SET,steamCN,DIRECT
-  - RULE-SET,OpenAI,OpenAI
-  - RULE-SET,reject,REJECT
-  - GEOSITE,category-ads,REJECT
-  - RULE-SET,gfw,Proxy
-  - GEOIP,LAN,DIRECT
-  - GEOSITE,cn,DIRECT
-  - GEOIP,cn,DIRECT
-  - MATCH,Proxy
+- DOMAIN-SUFFIX,emby.misakaf.org,Proxy
+- DOMAIN-SUFFIX,iflow.work,Proxy
+- DOMAIN-SUFFIX,hembed.com,OpenAI
+- DOMAIN-SUFFIX,hanime1.me,RN-SJC-Reality
+- RULE-SET,GameDownload,DIRECT
+- RULE-SET,steamCN,DIRECT
+- RULE-SET,OpenAI,OpenAI
+- RULE-SET,reject,REJECT
+- GEOSITE,category-ads,REJECT
+- RULE-SET,gfw,Proxy
+- GEOIP,LAN,DIRECT
+- GEOSITE,cn,DIRECT
+- GEOIP,cn,DIRECT
+- MATCH,Proxy
