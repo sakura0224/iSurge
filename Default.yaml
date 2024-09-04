@@ -83,8 +83,8 @@ proxies:
 - name: Sharon-JPstd-Reality
   type: vless
   server: 157.254.198.9
-  port: 17209
-  uuid: d9ecea05-d54d-412c-9a7a-da10acd2870e
+  port: 41455
+  uuid: a92e3dc9-4a5d-4575-b193-e5d2ec47b12c
   network: tcp
   tls: true
   udp: true
@@ -92,7 +92,7 @@ proxies:
   servername: www.lovelive-anime.jp
   reality-opts:
     short-id: 6ba85179e30d4fc2
-    public-key: G0gaRgmuS4pq5b7zmapzuPBehdGkC2bzhJetBSMIwFU
+    public-key: a1Afix542AoiqlUGhFxFkwrFrLTklhB4ve2pSfWSjVI
   client-fingerprint: chrome
 - name: V.PS-Tokyo-Reality
   type: vless
