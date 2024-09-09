@@ -41,14 +41,13 @@ sniffer:
       - 80
       - 8080-8880
       override-destination: true
-  sniffing:
-  - tls
-  - http
+    sniffing:
+    - tls
+    - http
 dns:
   enable: true
   cache-algorithm: arc
   listen: 0.0.0.0:53
-  ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
