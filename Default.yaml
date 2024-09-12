@@ -46,6 +46,7 @@ sniffer:
     - http
 dns:
   enable: true
+  ipv6: false
   cache-algorithm: arc
   listen: 0.0.0.0:53
   enhanced-mode: fake-ip
@@ -56,10 +57,16 @@ dns:
   - +.local
   default-nameserver:
   - 114.114.114.114
-  - 223.5.5.5
+  - 119.29.29.29
+  - 180.168.255.118
+  - 116.228.111.18
   nameserver:
   - 223.5.5.5
   - 114.114.114.114
+  fallback:
+  - tcp://1.1.1.1
+  - https://public.dns.iij.jp/dns-query
+  - https://doh.pub/dns-query
   nameserver-policy:
     geosite:cn,private:
     - 223.5.5.5
@@ -179,17 +186,12 @@ rule-providers:
     path: ./ruleset/Bing.yaml
     interval: 86400
 rules:
-- DOMAIN-SUFFIX,emby.misakaf.org,Proxy
-- DOMAIN-SUFFIX,iflow.work,Proxy
-- DOMAIN-SUFFIX,hembed.com,OpenAI
-- DOMAIN-SUFFIX,hanime1.me,RN-SJC-Reality
 - RULE-SET,GameDownload,DIRECT
 - RULE-SET,steamCN,DIRECT
 - RULE-SET,OpenAI,OpenAI
 - RULE-SET,reject,REJECT
 - GEOSITE,category-ads,REJECT
 - RULE-SET,gfw,Proxy
-- GEOIP,LAN,DIRECT
 - GEOSITE,cn,DIRECT
 - GEOIP,cn,DIRECT
 - MATCH,Proxy
