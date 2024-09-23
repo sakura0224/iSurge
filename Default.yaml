@@ -72,20 +72,6 @@ dns:
     - 223.5.5.5
     - 114.114.114.114
 proxies:
-- name: Sharon-JPlite-Reality
-  type: vless
-  server: 157.254.198.115
-  port: 20677
-  uuid: e7af5636-0b2c-4876-83de-01fafbfc2933
-  network: tcp
-  tls: true
-  udp: true
-  flow: xtls-rprx-vision
-  servername: www.lovelive-anime.jp
-  reality-opts:
-    short-id: 6ba85179e30d4fc2
-    public-key: V6YF_1mdBq0U0BI6M8wFgyd536eqGUKhmYwgM2ahNkc
-  client-fingerprint: chrome
 - name: Sharon-JPstd-Reality
   type: vless
   server: 157.254.198.9
@@ -132,14 +118,12 @@ proxy-groups:
 - name: Proxy
   type: select
   proxies:
-  - Sharon-JPlite-Reality
   - Sharon-JPstd-Reality
   - V.PS-Tokyo-Reality
   - RN-SJC-Reality
 - name: OpenAI
   type: select
   proxies:
-  - Sharon-JPlite-Reality
   - Sharon-JPstd-Reality
   - V.PS-Tokyo-Reality
 rule-providers:
@@ -186,6 +170,12 @@ rule-providers:
     path: ./ruleset/Bing.yaml
     interval: 86400
 rules:
+- IP-CIDR,10.10.9.9/32,DIRECT
+- DOMAIN-SUFFIX,emby.misakaf.org,Proxy
+- DOMAIN-SUFFIX,iflow.work,Proxy
+- DOMAIN-SUFFIX,hembed.com,OpenAI
+- DOMAIN-SUFFIX,hanime1.me,RN-SJC-Reality
+- DOMAIN-SUFFIX,chims.co,Proxy
 - RULE-SET,GameDownload,DIRECT
 - RULE-SET,steamCN,DIRECT
 - RULE-SET,OpenAI,OpenAI
