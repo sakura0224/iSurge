@@ -41,9 +41,6 @@ sniffer:
       - 80
       - 8080-8880
       override-destination: true
-    sniffing:
-    - tls
-    - http
 dns:
   enable: true
   ipv6: false
