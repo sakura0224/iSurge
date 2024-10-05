@@ -168,6 +168,8 @@ rule-providers:
     interval: 86400
 rules:
 - IP-CIDR,10.10.9.9/32,DIRECT
+- DOMAIN-SUFFIX,zhihu.com,DIRECT
+- DOMAIN-SUFFIX,iqiyi.com,DIRECT
 - DOMAIN-SUFFIX,emby.misakaf.org,Proxy
 - DOMAIN-SUFFIX,iflow.work,Proxy
 - DOMAIN-SUFFIX,hembed.com,OpenAI
