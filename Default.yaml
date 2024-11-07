@@ -10,7 +10,6 @@ geo-auto-update: false
 geo-update-interval: 24
 log-level: info
 global-client-fingerprint: chrome
-external-controller: 0.0.0.0:9090
 tcp-concurrent: true
 find-process-mode: strict
 unified-delay: true
@@ -27,6 +26,9 @@ tun:
   - tcp://any:53
 sniffer:
   enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: true
   sniff:
     QUIC:
       ports:
@@ -40,34 +42,54 @@ sniffer:
       ports:
       - 80
       - 8080-8880
-      override-destination: true
+  force-domain:
+    - +.v2ex.com
+  skip-domain:
+    - Mijia Cloud
+  skip-src-address:
+    - 192.168.0.3/32
+  skip-dst-address:
+    - 192.168.0.3/32
 dns:
   enable: true
+  respect-rules: false
+  listen: 0.0.0.0:1053
   ipv6: false
-  cache-algorithm: arc
-  listen: 0.0.0.0:53
+  default-nameserver:
+    - 223.5.5.5
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
+  fake-ip-filter-mode: blacklist
   fake-ip-filter:
-  - '*'
-  - +.lan
-  - +.local
-  default-nameserver:
-  - 114.114.114.114
-  - 119.29.29.29
-  - 180.168.255.118
-  - 116.228.111.18
-  nameserver:
-  - 223.5.5.5
-  - 114.114.114.114
-  fallback:
-  - tcp://1.1.1.1
-  - https://public.dns.iij.jp/dns-query
-  - https://doh.pub/dns-query
+    - '*.lan'
   nameserver-policy:
-    geosite:cn,private:
-    - 223.5.5.5
-    - 114.114.114.114
+    '+.arpa': '10.0.0.1'
+    'geosite:cn':
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  fallback:
+    - tls://8.8.4.4
+    - tls://1.1.1.1
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
+  direct-nameserver:
+    - system
+  direct-nameserver-follow-policy: false
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    nameserver-policy:
+      - gfw
+    ipcidr:
+      - 240.0.0.0/4
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+  
 proxies:
 - name: Sharon-JPstd-Reality
   type: vless
@@ -99,9 +121,9 @@ proxies:
   client-fingerprint: chrome
 - name: RN-SJC-Reality
   type: vless
-  server: 192.227.148.174
-  port: 13769
-  uuid: f7540b84-2e58-43ff-8523-0387077a78ef
+  server: 107.172.16.17
+  port: 18141
+  uuid: b8436b8c-27a2-484d-a163-c521a324fbbd
   network: tcp
   tls: true
   udp: true
@@ -109,7 +131,7 @@ proxies:
   servername: gateway.icloud.com
   reality-opts:
     short-id: 6ba85179e30d4fc2
-    public-key: 8g40GLOp70rUWtxanPxXyaN0gbcTnALuz4fXYVXh9xM
+    public-key: q4uI_Vc70vqz-sTsoZwiaZBN5OjiiIfkUn8Gicvr9Tg
   client-fingerprint: chrome
 proxy-groups:
 - name: Proxy
@@ -171,6 +193,7 @@ rules:
 - DOMAIN-SUFFIX,zhihu.com,DIRECT
 - DOMAIN-SUFFIX,iqiyi.com,DIRECT
 - DOMAIN-SUFFIX,emby.misakaf.org,Proxy
+- DOMAIN-SUFFIX,terraria.wiki.gg,Proxy
 - DOMAIN-SUFFIX,iflow.work,Proxy
 - DOMAIN-SUFFIX,hembed.com,OpenAI
 - DOMAIN-SUFFIX,hanime1.me,RN-SJC-Reality
