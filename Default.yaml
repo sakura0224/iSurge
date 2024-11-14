@@ -94,13 +94,13 @@ proxies:
 - name: Sharon-JPstd-Reality
   type: vless
   server: 157.254.198.9
-  port: 41455
-  uuid: a92e3dc9-4a5d-4575-b193-e5d2ec47b12c
+  port: 15254
+  uuid: 49b92e5f-f327-44d4-826c-01aab170984f
   network: tcp
   tls: true
   udp: true
   flow: xtls-rprx-vision
-  servername: www.lovelive-anime.jp
+  servername: itunes.apple.com
   reality-opts:
     short-id: 6ba85179e30d4fc2
     public-key: a1Afix542AoiqlUGhFxFkwrFrLTklhB4ve2pSfWSjVI
@@ -108,8 +108,8 @@ proxies:
 - name: V.PS-Tokyo-Reality
   type: vless
   server: 195.245.241.160
-  port: 29332
-  uuid: 38315afb-f655-454f-9f5b-8f83d1c59730
+  port: 25214
+  uuid: 6e06399c-aac9-4049-9b37-a5fee4f4ed17
   network: tcp
   tls: true
   udp: true
@@ -117,7 +117,7 @@ proxies:
   servername: www.lovelive-anime.jp
   reality-opts:
     short-id: 6ba85179e30d4fc2
-    public-key: BN5Uet02yGT83emVXrJQeKkRzKvzwR_OxoLqsVIRhEI
+    public-key: hBFF6wrVcvPfVRjaCVN10svJWRpln2jwahD1RJK0KV8
   client-fingerprint: chrome
 - name: RN-SJC-Reality
   type: vless
@@ -190,8 +190,8 @@ rule-providers:
     interval: 86400
 rules:
 - IP-CIDR,10.10.9.9/32,DIRECT
-- DOMAIN-SUFFIX,zhihu.com,DIRECT
-- DOMAIN-SUFFIX,iqiyi.com,DIRECT
+# - DOMAIN-SUFFIX,zhihu.com,DIRECT
+# - DOMAIN-SUFFIX,iqiyi.com,DIRECT
 - DOMAIN-SUFFIX,emby.misakaf.org,Proxy
 - DOMAIN-SUFFIX,terraria.wiki.gg,Proxy
 - DOMAIN-SUFFIX,iflow.work,Proxy
