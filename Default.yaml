@@ -91,19 +91,33 @@ dns:
       - '+.youtube.com'
   
 proxies:
-- name: Sharon-JPstd-Reality
+# - name: Sharon-JPstd-Reality
+#   type: vless
+#   server: 157.254.198.9
+#   port: 15254
+#   uuid: 49b92e5f-f327-44d4-826c-01aab170984f
+#   network: tcp
+#   tls: true
+#   udp: true
+#   flow: xtls-rprx-vision
+#   servername: itunes.apple.com
+#   reality-opts:
+#     short-id: 6ba85179e30d4fc2
+#     public-key: a1Afix542AoiqlUGhFxFkwrFrLTklhB4ve2pSfWSjVI
+#   client-fingerprint: chrome
+- name: YxVM-TokyoHybrid-Reality
   type: vless
-  server: 157.254.198.9
-  port: 15254
-  uuid: 49b92e5f-f327-44d4-826c-01aab170984f
+  server: 46.232.57.114
+  port: 10353
+  uuid: 3362a848-335c-4028-89fe-c8fce685c6d6
   network: tcp
   tls: true
   udp: true
   flow: xtls-rprx-vision
-  servername: itunes.apple.com
+  servername: www.lovelive-anime.jp
   reality-opts:
     short-id: 6ba85179e30d4fc2
-    public-key: a1Afix542AoiqlUGhFxFkwrFrLTklhB4ve2pSfWSjVI
+    public-key: KtQXzTCktn-VUhVRUD7VX9rCd5RChg9aUZNpGTBcp2w
   client-fingerprint: chrome
 - name: V.PS-Tokyo-Reality
   type: vless
@@ -137,13 +151,15 @@ proxy-groups:
 - name: Proxy
   type: select
   proxies:
-  - Sharon-JPstd-Reality
+  # - Sharon-JPstd-Reality
+  - YxVM-TokyoHybrid-Reality
   - V.PS-Tokyo-Reality
   - RN-SJC-Reality
 - name: OpenAI
   type: select
   proxies:
-  - Sharon-JPstd-Reality
+  # - Sharon-JPstd-Reality
+  - YxVM-TokyoHybrid-Reality
   - V.PS-Tokyo-Reality
 rule-providers:
   reject:
