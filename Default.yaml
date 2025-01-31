@@ -108,8 +108,8 @@ proxies:
 - name: YxVM-TokyoHybrid-Reality
   type: vless
   server: 46.232.57.114
-  port: 10353
-  uuid: 3362a848-335c-4028-89fe-c8fce685c6d6
+  port: 19092
+  uuid: 117eb82c-edab-4002-b16d-87f1fc5598b0
   network: tcp
   tls: true
   udp: true
@@ -117,7 +117,7 @@ proxies:
   servername: www.lovelive-anime.jp
   reality-opts:
     short-id: 6ba85179e30d4fc2
-    public-key: KtQXzTCktn-VUhVRUD7VX9rCd5RChg9aUZNpGTBcp2w
+    public-key: A88o8eMWAVYseGcpSJ2Hbvwmu1RXlMNcy339_Z_0tGg
   client-fingerprint: chrome
 - name: V.PS-Tokyo-Reality
   type: vless
@@ -208,6 +208,7 @@ rules:
 - IP-CIDR,10.10.9.9/32,DIRECT
 # - DOMAIN-SUFFIX,zhihu.com,DIRECT
 # - DOMAIN-SUFFIX,iqiyi.com,DIRECT
+- DOMAIN-SUFFIX,nodeseek.com,Proxy
 - DOMAIN-SUFFIX,emby.misakaf.org,Proxy
 - DOMAIN-SUFFIX,terraria.wiki.gg,Proxy
 - DOMAIN-SUFFIX,iflow.work,Proxy
