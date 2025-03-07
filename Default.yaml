@@ -62,11 +62,6 @@ dns:
   fake-ip-filter-mode: blacklist
   fake-ip-filter:
     - '*.lan'
-  nameserver-policy:
-    '+.arpa': '10.0.0.1'
-    'geosite:cn':
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
@@ -91,20 +86,6 @@ dns:
       - '+.youtube.com'
   
 proxies:
-# - name: Sharon-JPstd-Reality
-#   type: vless
-#   server: 157.254.198.9
-#   port: 15254
-#   uuid: 49b92e5f-f327-44d4-826c-01aab170984f
-#   network: tcp
-#   tls: true
-#   udp: true
-#   flow: xtls-rprx-vision
-#   servername: itunes.apple.com
-#   reality-opts:
-#     short-id: 6ba85179e30d4fc2
-#     public-key: a1Afix542AoiqlUGhFxFkwrFrLTklhB4ve2pSfWSjVI
-#   client-fingerprint: chrome
 - name: YxVM-TokyoHybrid-Reality
   type: vless
   server: 46.232.57.114
