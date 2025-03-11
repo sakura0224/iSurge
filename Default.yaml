@@ -86,20 +86,6 @@ dns:
       - '+.youtube.com'
   
 proxies:
-- name: YxVM-TokyoHybrid-Reality
-  type: vless
-  server: 46.232.57.114
-  port: 19092
-  uuid: 117eb82c-edab-4002-b16d-87f1fc5598b0
-  network: tcp
-  tls: true
-  udp: true
-  flow: xtls-rprx-vision
-  servername: www.lovelive-anime.jp
-  reality-opts:
-    short-id: 6ba85179e30d4fc2
-    public-key: A88o8eMWAVYseGcpSJ2Hbvwmu1RXlMNcy339_Z_0tGg
-  client-fingerprint: chrome
 - name: V.PS-Tokyo-Reality
   type: vless
   server: 195.245.241.160
@@ -132,15 +118,11 @@ proxy-groups:
 - name: Proxy
   type: select
   proxies:
-  # - Sharon-JPstd-Reality
-  - YxVM-TokyoHybrid-Reality
   - V.PS-Tokyo-Reality
   - RN-SJC-Reality
 - name: OpenAI
   type: select
   proxies:
-  # - Sharon-JPstd-Reality
-  - YxVM-TokyoHybrid-Reality
   - V.PS-Tokyo-Reality
 rule-providers:
   reject:
@@ -187,8 +169,6 @@ rule-providers:
     interval: 86400
 rules:
 - IP-CIDR,10.10.9.9/32,DIRECT
-# - DOMAIN-SUFFIX,zhihu.com,DIRECT
-# - DOMAIN-SUFFIX,iqiyi.com,DIRECT
 - DOMAIN-SUFFIX,nodeseek.com,Proxy
 - DOMAIN-SUFFIX,emby.misakaf.org,Proxy
 - DOMAIN-SUFFIX,terraria.wiki.gg,Proxy
