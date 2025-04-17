@@ -112,6 +112,20 @@ proxies:
     short-id: 6ba85179e30d4fc2
     public-key: hBFF6wrVcvPfVRjaCVN10svJWRpln2jwahD1RJK0KV8
   client-fingerprint: chrome
+- name: V.PS-Osaka-Reality
+  type: vless
+  server: 45.8.115.161
+  port: 10908
+  uuid: b81e3e72-5d81-430e-8198-58642131c2d4
+  network: tcp
+  tls: true
+  udp: true
+  flow: xtls-rprx-vision
+  servername: www.lovelive-anime.jp
+  reality-opts:
+    short-id: 6ba85179e30d4fc2
+    public-key: ECBw2nFADAl5CnKIAUxX7BUHGL9i2FD-oEzvrrlhDyA
+  client-fingerprint: chrome
 - name: RN-SJC-Reality
   type: vless
   server: 107.172.16.17
@@ -131,11 +145,13 @@ proxy-groups:
   type: select
   proxies:
   - V.PS-Tokyo-Reality
+  - V.PS-Osaka-Reality
   - RN-SJC-Reality
 - name: OpenAI
   type: select
   proxies:
   - V.PS-Tokyo-Reality
+  - V.PS-Osaka-Reality
 rule-providers:
   reject:
     type: http
@@ -181,16 +197,11 @@ rule-providers:
     interval: 86400
 rules:
 - IP-CIDR,10.10.9.9/32,DIRECT
-- DOMAIN-SUFFIX,chat.ayane.top,DIRECT
+- DOMAIN,chat.ayane.top,DIRECT
 - DOMAIN-SUFFIX,playerinfinite.com,Proxy
 - DOMAIN-SUFFIX,levelinfinite.com,Proxy
 - DOMAIN-SUFFIX,nodeseek.com,Proxy
-- DOMAIN-SUFFIX,emby.misakaf.org,Proxy
-- DOMAIN-SUFFIX,terraria.wiki.gg,Proxy
-- DOMAIN-SUFFIX,iflow.work,Proxy
-- DOMAIN-SUFFIX,hembed.com,OpenAI
 - DOMAIN-SUFFIX,hanime1.me,RN-SJC-Reality
-- DOMAIN-SUFFIX,chims.co,Proxy
 - RULE-SET,GameDownload,DIRECT
 - RULE-SET,steamCN,DIRECT
 - RULE-SET,OpenAI,OpenAI
