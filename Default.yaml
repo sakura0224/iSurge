@@ -100,9 +100,9 @@ dns:
 proxies:
 - name: V.PS-Tokyo-Reality
   type: vless
-  server: 195.245.241.160
-  port: 25214
-  uuid: 6e06399c-aac9-4049-9b37-a5fee4f4ed17
+  server: 149.62.44.180
+  port: 29241
+  uuid: d991f239-0abd-4053-a3a8-d8aed55b5d4f
   network: tcp
   tls: true
   udp: true
@@ -110,21 +110,7 @@ proxies:
   servername: www.lovelive-anime.jp
   reality-opts:
     short-id: 6ba85179e30d4fc2
-    public-key: hBFF6wrVcvPfVRjaCVN10svJWRpln2jwahD1RJK0KV8
-  client-fingerprint: chrome
-- name: V.PS-Osaka-Reality
-  type: vless
-  server: 45.8.115.161
-  port: 10908
-  uuid: b81e3e72-5d81-430e-8198-58642131c2d4
-  network: tcp
-  tls: true
-  udp: true
-  flow: xtls-rprx-vision
-  servername: www.lovelive-anime.jp
-  reality-opts:
-    short-id: 6ba85179e30d4fc2
-    public-key: ECBw2nFADAl5CnKIAUxX7BUHGL9i2FD-oEzvrrlhDyA
+    public-key: avJsVJMCHKMx12ZHrw1ZTdKivAb5SDfr5MY8Jw6B5j4
   client-fingerprint: chrome
 - name: RN-SJC-Reality
   type: vless
@@ -145,13 +131,11 @@ proxy-groups:
   type: select
   proxies:
   - V.PS-Tokyo-Reality
-  - V.PS-Osaka-Reality
   - RN-SJC-Reality
 - name: OpenAI
   type: select
   proxies:
   - V.PS-Tokyo-Reality
-  - V.PS-Osaka-Reality
 rule-providers:
   reject:
     type: http
