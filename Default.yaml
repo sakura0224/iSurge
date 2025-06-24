@@ -22,8 +22,8 @@ tun:
   auto-route: true
   auto-detect-interface: true
   dns-hijack:
-  - any:53
-  - tcp://any:53
+    - any:53
+    - tcp://any:53
 sniffer:
   enable: true
   force-dns-mapping: true
@@ -32,16 +32,16 @@ sniffer:
   sniff:
     QUIC:
       ports:
-      - 443
-      - 8443
+        - 443
+        - 8443
     TLS:
       ports:
-      - 443
-      - 8443
+        - 443
+        - 8443
     HTTP:
       ports:
-      - 80
-      - 8080-8880
+        - 80
+        - 8080-8880
   force-domain:
     - +.v2ex.com
   skip-domain:
@@ -62,16 +62,16 @@ dns:
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter-mode: blacklist
   fake-ip-filter:
-    - '*'
-    - '+.lan'
-    - '+.local'
+    - "*"
+    - "+.lan"
+    - "+.local"
     - +.stun.*.*
     - +.stun.*.*.*
     - +.stun.*.*.*.*
     - +.stun.*.*.*.*.*
   nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
+    - https://dns.google/dns-query
+    - https://1.1.1.1/dns-query
   fallback:
     - tls://8.8.4.4
     - tls://1.1.1.1
@@ -89,49 +89,50 @@ dns:
     ipcidr:
       - 240.0.0.0/4
     domain:
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
-  
+      - "+.google.com"
+      - "+.facebook.com"
+      - "+.youtube.com"
+
 proxies:
-- name: V.PS-Tokyo-Reality
-  type: vless
-  server: 149.62.44.180
-  port: 29241
-  uuid: d991f239-0abd-4053-a3a8-d8aed55b5d4f
-  network: tcp
-  tls: true
-  udp: true
-  flow: xtls-rprx-vision
-  servername: www.lovelive-anime.jp
-  reality-opts:
-    short-id: 6ba85179e30d4fc2
-    public-key: avJsVJMCHKMx12ZHrw1ZTdKivAb5SDfr5MY8Jw6B5j4
-  client-fingerprint: chrome
-- name: RN-SJC-Reality
-  type: vless
-  server: 107.172.16.17
-  port: 18141
-  uuid: b8436b8c-27a2-484d-a163-c521a324fbbd
-  network: tcp
-  tls: true
-  udp: true
-  flow: xtls-rprx-vision
-  servername: gateway.icloud.com
-  reality-opts:
-    short-id: 6ba85179e30d4fc2
-    public-key: q4uI_Vc70vqz-sTsoZwiaZBN5OjiiIfkUn8Gicvr9Tg
-  client-fingerprint: chrome
+  - name: V.PS-Tokyo-Reality
+    type: vless
+    server: 193.32.149.220
+    port: 10907
+    uuid: 68ef4695-bdd3-4920-85db-4d37614c9184
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: www.lovelive-anime.jp
+    reality-opts:
+      short-id: 6ba85179e30d4fc2
+      public-key: Q5MVTmn7DOK3riZI7tYeE6CP0x9iH8ec2EpcuVNdrlc
+    client-fingerprint: chrome
+  - name: RN-SJC-Reality
+    type: vless
+    server: 107.172.16.17
+    port: 18141
+    uuid: b8436b8c-27a2-484d-a163-c521a324fbbd
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: gateway.icloud.com
+    reality-opts:
+      short-id: 6ba85179e30d4fc2
+      public-key: q4uI_Vc70vqz-sTsoZwiaZBN5OjiiIfkUn8Gicvr9Tg
+    client-fingerprint: chrome
 proxy-groups:
-- name: Proxy
-  type: select
-  proxies:
-  - V.PS-Tokyo-Reality
-  - RN-SJC-Reality
-- name: OpenAI
-  type: select
-  proxies:
-  - V.PS-Tokyo-Reality
+  - name: Proxy
+    type: select
+    proxies:
+      - V.PS-Tokyo-Reality
+      - RN-SJC-Reality
+  - name: AdBlock
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
 rule-providers:
   reject:
     type: http
@@ -163,12 +164,6 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/GameDownload/GameDownload.yaml
     path: ./ruleset/GameDownload.yaml
     interval: 86400
-  OpenAI:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml
-    path: ./ruleset/OpenAI.yaml
-    interval: 86400
   Bing:
     type: http
     behavior: classical
@@ -176,18 +171,16 @@ rule-providers:
     path: ./ruleset/Bing.yaml
     interval: 86400
 rules:
-- IP-CIDR,10.10.9.9/32,DIRECT
-- DOMAIN,chat.ayane.top,DIRECT
-- DOMAIN-SUFFIX,playerinfinite.com,Proxy
-- DOMAIN-SUFFIX,levelinfinite.com,Proxy
-- DOMAIN-SUFFIX,nodeseek.com,Proxy
-- DOMAIN-SUFFIX,hanime1.me,RN-SJC-Reality
-- RULE-SET,GameDownload,DIRECT
-- RULE-SET,steamCN,DIRECT
-- RULE-SET,OpenAI,OpenAI
-- RULE-SET,reject,REJECT
-- GEOSITE,category-ads,REJECT
-- RULE-SET,gfw,Proxy
-- GEOSITE,cn,DIRECT
-- GEOIP,cn,DIRECT
-- MATCH,Proxy
+  - IP-CIDR,10.10.9.9/32,DIRECT
+  - DOMAIN-SUFFIX,playerinfinite.com,Proxy
+  - DOMAIN-SUFFIX,levelinfinite.com,Proxy
+  - DOMAIN-SUFFIX,nodeseek.com,Proxy
+  - DOMAIN-SUFFIX,hanime1.me,RN-SJC-Reality
+  - RULE-SET,GameDownload,DIRECT
+  - RULE-SET,steamCN,DIRECT
+  - RULE-SET,reject,AdBlock
+  - GEOSITE,category-ads,AdBlock
+  - RULE-SET,gfw,Proxy
+  - GEOSITE,cn,DIRECT
+  - GEOIP,cn,DIRECT
+  - MATCH,Proxy
