@@ -1,0 +1,14 @@
+# NAME: nikke
+# AUTHOR: sakura0224
+# REPO: https://github.com/sakura0224/iSurge
+# UPDATED: 2025-08-17 20:18:00
+# DOMAIN-SUFFIX: 5
+# DOMAIN-KEYWORD: 1
+# TOTAL: 6
+payload:
+  - DOMAIN-KEYWORD,nikke
+  - DOMAIN-SUFFIX,levelinfinite.com
+  - DOMAIN-SUFFIX,blablalink.com
+  - DOMAIN-SUFFIX,playerinfinite.com
+  - DOMAIN-SUFFIX,DOMAIN-SUFFIX,intlgame.com
+  - DOMAIN-SUFFIX,DOMAIN-SUFFIX,rumt-sg.com
