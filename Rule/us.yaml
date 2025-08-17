@@ -1,0 +1,12 @@
+# NAME: us
+# AUTHOR: sakura0224
+# REPO: https://github.com/sakura0224/iSurge
+# UPDATED: 2025-08-17 20:16:00
+# DOMAIN-SUFFIX: 3
+# DOMAIN-KEYWORD: 1
+# TOTAL: 4
+payload:
+  - DOMAIN-SUFFIX,exhentai.org
+  - DOMAIN-SUFFIX,e-hentai.org
+  - DOMAIN-SUFFIX,hanime1.me
+  - DOMAIN-KEYWORD,civitai
